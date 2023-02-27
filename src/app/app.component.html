@@ -1,0 +1,37 @@
+<mat-toolbar style="background-color: rgb(224, 59, 100);">
+  <span>Tentativa de um formulário</span>
+</mat-toolbar>
+
+
+
+
+
+<form (ngSubmit)="onSubmit()" #form="ngForm" id="batata" >
+  <p><b> Dados para cadastro: </b> </p>
+  <input type="text" [(ngModel)]="dados.nome" placeholder="Nome" id="nome"  name="nome" required/>
+
+  <div id="dois">
+    <input type="email" [(ngModel)]="dados.email" placeholder="Email" id="email" name="email" required/>
+  </div>
+<div id="tres">
+    <input type="date" [(ngModel)]="dados.aniversario" id="aniversario" name="aniversario" required/>
+  </div>
+  <div id="quatro">
+    <input type="tel" [(ngModel)]="dados.celular" placeholder="Celular" name="celular" required/>
+  </div>
+  <div id="cinco">
+    <input type="password" [(ngModel)]="dados.senha" placeholder="Senha" name="senha" required/>
+  </div>
+  <button (click)="submitForm()" type="submit" id="btn" [disabled]="!form.valid">Enviar</button>
+
+</form>
+
+
+
+
+
+
+
+
+
+

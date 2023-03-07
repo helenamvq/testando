@@ -7,11 +7,17 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {  ReactiveFormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import { TabelaComponent } from './tabela/tabela.component';
+import { ToastrModule } from 'ngx-toastr';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TabelaComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -19,7 +25,13 @@ import {  ReactiveFormsModule } from '@angular/forms';
     MatToolbarModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+     ToastrModule.forRoot(),
+     MatProgressSpinnerModule
+
+
+
 
   ],
   providers: [],

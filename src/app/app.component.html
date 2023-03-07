@@ -1,4 +1,4 @@
-<mat-toolbar style="background-color: rgb(224, 59, 100);">
+<mat-toolbar style="background-color: #e03b64;">
   <span>Tentativa de um formulário</span>
 </mat-toolbar>
 
@@ -6,32 +6,69 @@
 
 
 
-<form (ngSubmit)="onSubmit()" #form="ngForm" id="batata" >
+<form (ngSubmit)="tabelaVisivel = true" (ngSubmit)="tabelaVisivel = true" (ngSubmit)="onSubmit()" #form="ngForm" id="batata" >
   <p><b> Dados para cadastro: </b> </p>
-  <input type="text" [(ngModel)]="dados.nome" placeholder="Nome" id="nome"  name="nome" required/>
+  <input type="text" [(ngModel)]="dadosForm.nome" placeholder="Nome" id="nome"  name="nome" required/>
 
   <div id="dois">
-    <input type="email" [(ngModel)]="dados.email" placeholder="Email" id="email" name="email" required/>
+    <input type="email" [(ngModel)]="dadosForm.email" placeholder="Email" id="email" name="email" required/>
   </div>
 <div id="tres">
-    <input type="date" [(ngModel)]="dados.aniversario" id="aniversario" name="aniversario" required/>
+    <input type="date" [(ngModel)]="dadosForm.aniversario" id="aniversario" name="aniversario" required/>
   </div>
   <div id="quatro">
-    <input type="tel" [(ngModel)]="dados.celular" placeholder="Celular" name="celular" required/>
+    <input type="tel" [(ngModel)]="dadosForm.celular" placeholder="Celular" name="celular" required/>
   </div>
   <div id="cinco">
-    <input type="password" [(ngModel)]="dados.senha" placeholder="Senha" name="senha" required/>
+    <input type="password" [(ngModel)]="dadosForm.senha" placeholder="Senha" name="senha" required/>
   </div>
   <button (click)="submitForm()" type="submit" id="btn" [disabled]="!form.valid">Enviar</button>
-
 </form>
+<div class="mensagem-enviada" *ngIf="mensagemEnviada">
+  <p>Formulário enviado!</p>
+</div>
+
+  <mat-spinner *ngIf="showSpinner" id="carregando" ></mat-spinner>
+
+
+<div id="banana">
+
+  <table [ngClass]="{ 'd-none': isLoading, 'd-block': !isLoading }" mat-table [dataSource]="resultado" class="mat-elevation-z8">
+    <!-- Tabela de dados aqui -->
 
 
 
+    <!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="dataNascimento">
+    <th mat-header-cell *matHeaderCellDef> Data de Nascimento </th>
+    <td mat-cell *matCellDef="let element"> {{element.dataNascimento}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="celular">
+    <th mat-header-cell *matHeaderCellDef> Celular </th>
+    <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
 
 
-
-
-
-
-
+</div>
